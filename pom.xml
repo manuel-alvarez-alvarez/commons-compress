@@ -25,7 +25,7 @@
 
   <groupId>org.apache.commons</groupId>
   <artifactId>commons-compress</artifactId>
-  <version>1.12</version>
+  <version>1.12.hdiv</version>
   <name>Apache Commons Compress</name>
   <url>http://commons.apache.org/proper/commons-compress/</url>
   <!-- The description is not indented to make it look better in the release notes -->
@@ -158,6 +158,17 @@ jar, tar, zip, dump, 7z, arj.
     <developerConnection>scm:git:https://git-wip-us.apache.org/repos/asf/commons-compress.git</developerConnection>
     <url>https://git-wip-us.apache.org/repos/asf?p=commons-compress.git</url>
   </scm>
+
+  <distributionManagement>
+    <snapshotRepository>
+      <id>nexus</id>
+      <url>https://artifacts.hdivsecurity.com/nexus/content/repositories/snapshots</url>
+    </snapshotRepository>
+    <repository>
+      <id>nexus</id>
+      <url>https://artifacts.hdivsecurity.com/nexus/content/repositories/releases</url>
+    </repository>
+  </distributionManagement>
 
   <build>
     <pluginManagement>
