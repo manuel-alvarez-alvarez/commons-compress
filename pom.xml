@@ -254,6 +254,55 @@ jar, tar, zip, dump, 7z, arj.
         <artifactId>maven-pmd-plugin</artifactId>
         <version>${commons.pmd-plugin.version}</version>
       </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-enforcer-plugin</artifactId>
+        <dependencies>
+          <dependency>
+            <groupId>org.owasp.maven.enforcer</groupId>
+            <artifactId>class-file-format-rule</artifactId>
+            <version>1.0.0</version>
+          </dependency>
+        </dependencies>
+        <inherited>true</inherited>
+        <executions>
+          <execution>
+            <id>enforce-classfileformat</id>
+            <configuration>
+              <rules>
+                <byteCodeRule implementation="org.owasp.maven.enforcer.rule.ClassFileFormatRule">
+                  <supportedClassFileFormat>50</supportedClassFileFormat>
+                </byteCodeRule>
+              </rules>
+            </configuration>
+            <phase>verify</phase>
+            <goals>
+              <goal>enforce</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>animal-sniffer-maven-plugin</artifactId>
+        <version>1.18</version>
+        <executions>
+          <execution>
+            <id>signature-check</id>
+            <phase>verify</phase>
+            <goals>
+              <goal>check</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <signature>
+            <groupId>org.codehaus.mojo.signature</groupId>
+            <artifactId>java16</artifactId>
+            <version>1.0</version>
+          </signature>
+        </configuration>
+      </plugin>
     </plugins>
   </build>
 
